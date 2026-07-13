@@ -9,6 +9,14 @@ app = FastAPI(
 
 templates = Jinja2Templates(directory="app/static")
 
+status_table = [
+	{
+		"station": "Khao Yai 01",
+		"status": "Nominal",
+		"time": "2026-07-13 12:00"
+	}
+]
+
 @app.get("/api")
 async def root():
 	return {
