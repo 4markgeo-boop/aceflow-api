@@ -19,12 +19,13 @@ status_table = [
 
 @app.post("/api")
 async def root():
-#	status_table.append({
-#		"station": station,
-#		"status": status,
-#		"time": time
-#	})
-
+	print("Before:", status_table)
+	status_table.append({
+		"station": station,
+		"status": status,
+		"time": time
+	})
+	print("After:", status_table)
 	return {"success": True}
 
 @app.get("/")
