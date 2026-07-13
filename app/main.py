@@ -19,9 +19,13 @@ status_table = [
 
 @app.get("/api")
 async def root():
-	return {
-		"message": "ACE-FLOW API is running"
-	}
+	status_table.append({
+		"station": station,
+		"status": status,
+		"time": time
+	})
+
+	return {"success": True}
 
 @app.get("/")
 def dashboard(request: Request):
