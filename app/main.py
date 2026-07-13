@@ -1,5 +1,11 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel
+from datetime import datetime
+
+class Alert(BaseModel):
+	station: str
+	status: str
 
 app = FastAPI(
 	title="ACE-FLOW API",
@@ -18,14 +24,13 @@ status_table = [
 ]
 
 @app.post("/api")
-async def root():
-	print("Before:", status_table)
+async def receive_alert(alert: Alert):
 	status_table.append({
-		"station": station,
-		"status": status,
-		"time": time
+		"station": alert.station,
+		"status": alert.status,
+		"time": datetime.now().strftime(%Y-%m-%d %H:%M:%S")
 	})
-	print("After:", status_table)
+
 	return {"success": True}
 
 @app.get("/")
