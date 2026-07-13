@@ -19,3 +19,4 @@ def dashboard(request: Request):
 		request=request,
 		name="app/static/index.html",
 		context={"status_table": status_table}
+	)
