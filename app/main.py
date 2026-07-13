@@ -27,6 +27,6 @@ async def root():
 def dashboard(request: Request):
 	return templates.TemplateResponse(
 		request=request,
-		name="app/static/index.html",
+		name="index.html",
 		context={"status_table": status_table}
 	)
