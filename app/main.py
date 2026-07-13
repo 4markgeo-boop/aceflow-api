@@ -25,11 +25,14 @@ status_table = [
 
 @app.post("/api")
 async def receive_alert(alert: Alert):
-	status_table.append({
+	status_table.insert(0, {
 		"station": alert.station,
 		"status": alert.status,
 		"time": (datetime.utcnow() + timedelta(hours=7)).strftime("%Y-%m-%d %H:%M:%S")
 	})
+
+	if len(status_table) > 10:
+		status_table.pop()
 
 	return {"success": True}
 
