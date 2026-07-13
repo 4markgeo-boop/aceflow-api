@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 
 app = FastAPI(
 	title="ACE-FLOW API",
@@ -11,3 +12,7 @@ async def root():
 	return {
 		"message": "ACE-FLOW API is running"
 	}
+
+@app.get("/dashboard")
+def dashboard():
+	return FileResponse("static/index.html")
