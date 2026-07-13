@@ -7,12 +7,12 @@ app = FastAPI(
 	version="0.1.0"
 )
 
-@app.get("/")
+@app.get("/api")
 async def root():
 	return {
 		"message": "ACE-FLOW API is running"
 	}
 
-@app.get("/dashboard")
+@app.get("/")
 def dashboard():
 	return FileResponse("app/static/index.html")
