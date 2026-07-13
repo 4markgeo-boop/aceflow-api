@@ -15,4 +15,4 @@ async def root():
 
 @app.get("/dashboard")
 def dashboard():
-	return FileResponse("static/index.html")
+	return FileResponse("app/static/index.html")
