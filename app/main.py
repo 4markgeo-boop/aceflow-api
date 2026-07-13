@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class Alert(BaseModel):
 	station: str
@@ -28,7 +28,7 @@ async def receive_alert(alert: Alert):
 	status_table.append({
 		"station": alert.station,
 		"status": alert.status,
-		"time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+		"time": (datetime.utcnow() + timedelta(hours=7)).strftime("%Y-%m-%d %H:%M:%S")
 	})
 
 	return {"success": True}
