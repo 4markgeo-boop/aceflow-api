@@ -28,7 +28,7 @@ async def receive_alert(alert: Alert):
 	status_table.append({
 		"station": alert.station,
 		"status": alert.status,
-		"time": datetime.now().strftime(%Y-%m-%d %H:%M:%S")
+		"time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 	})
 
 	return {"success": True}
