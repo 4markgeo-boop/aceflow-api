@@ -17,7 +17,7 @@ status_table = [
 	}
 ]
 
-@app.get("/api")
+@app.post("/api")
 async def root():
 	status_table.append({
 		"station": station,
