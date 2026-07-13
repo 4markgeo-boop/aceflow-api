@@ -1,5 +1,5 @@
-from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI(
 	title="ACE-FLOW API",
@@ -14,5 +14,8 @@ async def root():
 	}
 
 @app.get("/")
-def dashboard():
-	return FileResponse("app/static/index.html")
+def dashboard(request: Request):
+	return templates.TemplateResponse(
+		request=request,
+		name="app/static/index.html",
+		context={"status_table": status_table)

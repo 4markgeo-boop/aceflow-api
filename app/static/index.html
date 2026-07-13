@@ -104,12 +104,12 @@
             <th>Date/Time</th>
         </tr>
 
-        <tr>
-            <td>Khao Yai 01</td>
-            <td>Nominal</td>
-            <td>2026-07-13 08:30</td>
-        </tr>
-
+	{% for row in status_table %}
+	<tr>
+		<td>{{ row.station }}</td>
+		<td>{{ row.status }}</td>
+		<td>{{ row.time }}</td>
+	</tr>
     </table>
 
 
