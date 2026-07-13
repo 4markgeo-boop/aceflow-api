@@ -6,6 +6,7 @@ app = FastAPI(
 	description="Flash flood monitoring system API",
 	version="0.1.0"
 )
+templates = Jinja2Templates(directory="app/static")
 
 @app.get("/api")
 async def root():
