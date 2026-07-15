@@ -15,10 +15,10 @@ app = FastAPI(
 	version="0.1.0"
 )
 
-templates = Jinja2Templates(directory="app/static")
-
 IMAGE_DIR = Path("app/static/images")
 IMAGE_DIR.mkdir(parents=True, exist_ok=True)
+
+templates = Jinja2Templates(directory="app/static")
 
 app.mount("/images", StaticFiles(directory=IMAGE_DIR), name="images")
 
@@ -43,6 +43,11 @@ async def receive_alert(alert: Alert):
 		status_table.pop()
 
 	return {"success": True}
+
+def make_image_filename(station: str) -> str:
+	timestamp = (datetime.utcnow() + timedelta(hours=7)).strftime("%Y-%m-%d %H:%M:%S")
+	safe_station = station.replace(" ", "_")
+	return f"{timestamp}_{safe_station}.jpg"
 
 @app.get("/")
 def dashboard(request: Request):
