@@ -102,6 +102,7 @@
             <th>Station</th>
             <th>Status</th>
             <th>Date/Time</th>
+            <th>Image</th>
         </tr>
 
 	{% for row in status_table %}
@@ -109,6 +110,10 @@
 		<td>{{ row.station }}</td>
 		<td>{{ row.status }}</td>
 		<td>{{ row.time }}</td>
+                <td>{% if row.image %}
+                        <a href={{ row.image }}" width="100></a>
+                    {% endif %}
+                </td>
 	</tr>
 	{% endfor %}
     </table>
