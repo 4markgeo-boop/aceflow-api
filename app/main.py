@@ -17,8 +17,8 @@ templates = Jinja2Templates(directory="app/static")
 
 status_table = [
 	{
-		"station": "Khao Yai 01",
-		"status": "Nominal",
+		"station": "Land View 01",
+		"status": "Baseline",
 		"time": "2026-07-13 12:00"
 	}
 ]
