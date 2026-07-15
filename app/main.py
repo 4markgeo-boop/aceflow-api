@@ -1,7 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, UploadFile, File, Form
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from datetime import datetime, timedelta
+from pathlib import Path
 
 class Alert(BaseModel):
 	station: str
@@ -15,11 +17,17 @@ app = FastAPI(
 
 templates = Jinja2Templates(directory="app/static")
 
+IMAGE_DIR = Path("app/static/images")
+IMAGE_DIR = mkdir(parents=True, exist_ok=True)
+
+app.mount("/images", StaticFiles(directory=IMAGE_DIR), name="images")
+
 status_table = [
 	{
 		"station": "Land View 01",
 		"status": "Baseline",
-		"time": "2026-07-13 12:00"
+		"time": "2026-07-13 12:00",
+		"image": None
 	}
 ]
 
