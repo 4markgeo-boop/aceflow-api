@@ -32,11 +32,27 @@ status_table = [
 ]
 
 @app.post("/api")
-async def receive_alert(alert: Alert):
+async def receive_alert(station: 
+	str = Form(...), 
+	status: str = Form(...),
+	image: UploadFile | None = File(None)
+	):
+
+	image_url = None
+	if image:
+		filename = make_image_filename(station)
+		filepath = IMAGE_DIR / filename
+
+		with open(filepath, "wb") as buffer:
+			buffer.write(await image.read())
+
+	image_url = f"/images/{filename}"
+
 	status_table.insert(0, {
-		"station": alert.station,
-		"status": alert.status,
-		"time": (datetime.utcnow() + timedelta(hours=7)).strftime("%Y-%m-%d %H:%M:%S")
+		"station": station,
+		"status": status,
+		"time": (datetime.utcnow() + timedelta(hours=7)).strftime("%Y-%m-%d %H:%M:%S"),
+		"image": image_url
 	})
 
 	if len(status_table) > 10:
