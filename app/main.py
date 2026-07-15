@@ -46,7 +46,7 @@ async def receive_alert(station:
 		with open(filepath, "wb") as buffer:
 			buffer.write(await image.read())
 
-	image_url = f"/images/{filename}"
+		image_url = f"/images/{filename}"
 
 	status_table.insert(0, {
 		"station": station,
