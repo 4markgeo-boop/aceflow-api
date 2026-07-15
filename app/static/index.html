@@ -111,7 +111,8 @@
 		<td>{{ row.status }}</td>
 		<td>{{ row.time }}</td>
                 <td>{% if row.image %}
-                        <a href={{ row.image }}" width="100></a>
+                        <a href="{{ row.image }}" target="_blank">
+                        <img src="{{ row.image }}" width="100"></a>
                     {% endif %}
                 </td>
 	</tr>
