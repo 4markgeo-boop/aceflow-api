@@ -110,9 +110,9 @@
 	<tr>
 		<td>{{ row.station }}</td>
 		<td>{{ row.status }}</td>
-                <td>{{% if row.level %}}
+                <td>{% if row.level %}
 			row.level
-                    {{% endif %}}</td>
+                    {% endif %}</td>
                 <td>{{ row.level }}</td>
 		<td>{{ row.time }}</td>
                 <td>{% if row.image %}
