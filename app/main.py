@@ -52,6 +52,7 @@ async def receive_alert(station:
 	status_table.insert(0, {
 		"station": station,
 		"status": status,
+		"level": None,
 		"time": (datetime.utcnow() + timedelta(hours=7)).strftime("%Y-%m-%d %H:%M:%S"),
 		"image": image_url
 	})
