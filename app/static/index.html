@@ -100,7 +100,8 @@
     <table>
         <tr>
             <th>Station</th>
-            <th>Status</th>
+            <th>Station<br>Status</th>
+            <th>Warning<br>Level</th>
             <th>Date/Time</th>
             <th>Image</th>
         </tr>
@@ -109,6 +110,7 @@
 	<tr>
 		<td>{{ row.station }}</td>
 		<td>{{ row.status }}</td>
+                <td>Null</td>
 		<td>{{ row.time }}</td>
                 <td>{% if row.image %}
                         <a href="{{ row.image }}" target="_blank">
