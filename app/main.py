@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from datetime import datetime, timedelta
 from pathlib import Path
+import random
 
 class Alert(BaseModel):
 	station: str
@@ -32,6 +33,11 @@ status_table = [
 	}
 ]
 
+def ai_analysis():
+	#Placeholder until actual ai analysis
+	levels = ["Normal", "Elevated", "Flood Watch", "Critical"]
+	return(random.choice(levels))
+
 @app.post("/api")
 async def receive_alert(station: 
 	str = Form(...), 
@@ -49,10 +55,12 @@ async def receive_alert(station:
 
 		image_url = f"/images/{filename}"
 
+	analysis = ai_analysis()
+
 	status_table.insert(0, {
 		"station": station,
 		"status": status,
-		"level": None,
+		"level": analysis,
 		"time": (datetime.utcnow() + timedelta(hours=7)).strftime("%Y-%m-%d %H:%M:%S"),
 		"image": image_url
 	})
