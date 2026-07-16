@@ -109,8 +109,7 @@
 	{% for row in status_table %}
 	<tr>
 		<td>{{ row.station }}</td>
-		<td>{{ row.status }}</td>
-                <td>{% if row.level %}
+		<td>{{ row.status }}
 			{{ row.level }}
                     {% endif %}
                 </td>
